@@ -58,3 +58,6 @@ internal class ForegroundServiceStartNotAllowedException :
 
 internal class ForegroundServicePermissionsException :
   CodedException("Couldn't start the foreground service. Foreground service permissions were not found in the manifest")
+
+internal class LocationManagerUnavailable :
+  CodedException("Location manager is unavailable")

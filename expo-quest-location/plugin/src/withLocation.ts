@@ -6,8 +6,12 @@ import {
   withInfoPlist,
 } from 'expo/config-plugins';
 
-const pkg = require('expo-location/package.json');
+import withHorizon from './withHorizon';
+
+const pkg = require('expo-quest-location/package.json');
 const LOCATION_USAGE = 'Allow $(PRODUCT_NAME) to access your location';
+
+const useHorizon = !!process.env.EXPO_HORIZON;
 
 const withBackgroundLocation: ConfigPlugin = (config) => {
   return withInfoPlist(config, (config) => {
@@ -45,6 +49,11 @@ const withLocation: ConfigPlugin<
     config = withBackgroundLocation(config);
   }
 
+  // Add Horizon support
+  if (useHorizon) {
+    config = withHorizon(config);
+  }
+
   IOSConfig.Permissions.createPermissionsPlugin({
     NSLocationAlwaysAndWhenInUseUsageDescription: LOCATION_USAGE,
     NSLocationAlwaysUsageDescription: LOCATION_USAGE,
@@ -71,7 +80,9 @@ const withLocation: ConfigPlugin<
       'android.permission.ACCESS_COARSE_LOCATION',
       'android.permission.ACCESS_FINE_LOCATION',
       // These permissions are optional, and not listed in the library AndroidManifest.xml
-      isAndroidBackgroundLocationEnabled && 'android.permission.ACCESS_BACKGROUND_LOCATION',
+      !useHorizon && // ACCESS_BACKGROUND_LOCATION is not supported on Meta Quest devices
+        isAndroidBackgroundLocationEnabled &&
+        'android.permission.ACCESS_BACKGROUND_LOCATION',
       enableAndroidForegroundService && 'android.permission.FOREGROUND_SERVICE',
       enableAndroidForegroundService && 'android.permission.FOREGROUND_SERVICE_LOCATION',
     ].filter(Boolean) as string[]

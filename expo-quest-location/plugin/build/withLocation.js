@@ -1,8 +1,13 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const config_plugins_1 = require("expo/config-plugins");
-const pkg = require('expo-location/package.json');
+const withHorizon_1 = __importDefault(require("./withHorizon"));
+const pkg = require('expo-quest-location/package.json');
 const LOCATION_USAGE = 'Allow $(PRODUCT_NAME) to access your location';
+const useHorizon = !!process.env.EXPO_HORIZON;
 const withBackgroundLocation = (config) => {
     return (0, config_plugins_1.withInfoPlist)(config, (config) => {
         if (!Array.isArray(config.modResults.UIBackgroundModes)) {
@@ -17,6 +22,10 @@ const withBackgroundLocation = (config) => {
 const withLocation = (config, { locationAlwaysAndWhenInUsePermission, locationAlwaysPermission, locationWhenInUsePermission, isIosBackgroundLocationEnabled, isAndroidBackgroundLocationEnabled, isAndroidForegroundServiceEnabled, } = {}) => {
     if (isIosBackgroundLocationEnabled) {
         config = withBackgroundLocation(config);
+    }
+    // Add Horizon support
+    if (useHorizon) {
+        config = (0, withHorizon_1.default)(config);
     }
     config_plugins_1.IOSConfig.Permissions.createPermissionsPlugin({
         NSLocationAlwaysAndWhenInUseUsageDescription: LOCATION_USAGE,
@@ -39,7 +48,9 @@ const withLocation = (config, { locationAlwaysAndWhenInUsePermission, locationAl
         'android.permission.ACCESS_COARSE_LOCATION',
         'android.permission.ACCESS_FINE_LOCATION',
         // These permissions are optional, and not listed in the library AndroidManifest.xml
-        isAndroidBackgroundLocationEnabled && 'android.permission.ACCESS_BACKGROUND_LOCATION',
+        !useHorizon && // ACCESS_BACKGROUND_LOCATION is not supported on Meta Quest devices
+            isAndroidBackgroundLocationEnabled &&
+            'android.permission.ACCESS_BACKGROUND_LOCATION',
         enableAndroidForegroundService && 'android.permission.FOREGROUND_SERVICE',
         enableAndroidForegroundService && 'android.permission.FOREGROUND_SERVICE_LOCATION',
     ].filter(Boolean));

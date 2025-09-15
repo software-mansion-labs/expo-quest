@@ -1,7 +1,7 @@
 {
-  "name": "expo-location",
+  "name": "expo-quest-location",
   "version": "19.0.7",
-  "description": "Allows reading geolocation information from the device. Your app can poll for the current location or subscribe to location update events.",
+  "description": "A fork of expo-location that provides two implementations: The default expo-location behavior using Google Play Services. A Meta Quest-compatible implementation that does not rely on Google Play Services.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "sideEffects": false,
@@ -26,20 +26,20 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/expo/expo.git",
-    "directory": "packages/expo-location"
+    "url": "https://github.com/software-mansion-labs/expo-quest.git",
+    "directory": "expo-quest-location"
   },
   "bugs": {
-    "url": "https://github.com/expo/expo/issues"
+    "url": "https://github.com/software-mansion-labs/expo-quest/issues"
   },
   "author": "650 Industries, Inc.",
   "license": "MIT",
-  "homepage": "https://docs.expo.dev/versions/latest/sdk/location/",
+  "homepage": "https://www.npmjs.com/package/expo-quest-location",
   "jest": {
     "preset": "expo-module-scripts"
   },
   "devDependencies": {
-    "expo-module-scripts": "^5.0.7"
+    "expo-module-scripts": "^4.1.7"
   },
   "peerDependencies": {
     "expo": "*"

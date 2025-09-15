@@ -1,6 +1,0 @@
-{
-  "name": "expo-quest",
-  "version": "1.0.0",
-  "private": true,
-  "workspaces": ["example", "expo-quest-location", "expo-quest-notifications"]
-}
