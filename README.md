@@ -2,10 +2,15 @@
 
 This is a fork of some of the `expo` packages which adds a support for Meta Quest devices.
 
-## Supported packages
+## Included packages
 
-- [`expo-location`](expo-quest-location/README.md)
-- [`expo-notifications`](expo-quest-notifications/README.md)
+- [`expo-quest`](expo-quest/README.md) - for building Expo applications for Meta Quest devices
+- [`expo-quest-location`](expo-quest-location/README.md) - for location services on Meta Quest devices
+- [`expo-quest-notifications`](expo-quest-notifications/README.md) - for push notifications on Meta Quest devices
+
+## Example app
+
+- [`example`](example/README.md) - an example app that uses the included packages
 
 ## Usage
 
