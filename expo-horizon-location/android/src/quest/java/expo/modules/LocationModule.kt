@@ -16,7 +16,6 @@ import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.core.location.LocationManagerCompat
 import androidx.core.os.bundleOf
 import expo.modules.core.interfaces.ActivityEventListener
-import expo.modules.core.interfaces.LifecycleEventListener
 import expo.modules.core.interfaces.services.UIManager
 import expo.modules.interfaces.taskManager.TaskManagerInterface
 import expo.modules.kotlin.Promise
@@ -41,7 +40,7 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class LocationModule : Module(), LifecycleEventListener, ActivityEventListener {
+class LocationModule : Module(), ActivityEventListener {
   private val mLocationCallbacks = HashMap<Int, LocationListener>()
   private val mLocationRequests = HashMap<Int, LocationRequest>()
   private var mPendingLocationRequests = ArrayList<LocationActivityResultListener>()
@@ -297,10 +296,16 @@ class LocationModule : Module(), LifecycleEventListener, ActivityEventListener {
 
     OnActivityEntersForeground {
       AppForegroundedSingleton.isForegrounded = true
+      resumeLocationUpdates()
     }
 
     OnActivityEntersBackground {
       AppForegroundedSingleton.isForegrounded = false
+      stopWatching()
+    }
+
+    OnDestroy {
+      stopWatching()
     }
   }
 
@@ -520,11 +525,6 @@ class LocationModule : Module(), LifecycleEventListener, ActivityEventListener {
     sendEvent(LOCATION_EVENT_NAME, responseBundle)
   }
 
-  private fun startWatching() {
-    // Resume paused location updates
-    resumeLocationUpdates()
-  }
-
   private fun stopWatching() {
     for (requestId in mLocationCallbacks.keys) {
       pauseLocationUpdatesForRequest(requestId)
@@ -532,9 +532,12 @@ class LocationModule : Module(), LifecycleEventListener, ActivityEventListener {
   }
 
   private fun pauseLocationUpdatesForRequest(requestId: Int) {
-    // For LocationManager, we can't easily pause individual location listeners
-    // The system will handle cleanup when the service is destroyed
-    // This is a limitation of using LocationManager instead of FusedLocationProviderClient
+    val locationListener = mLocationCallbacks[requestId] ?: return
+    try {
+      mLocationManager.removeUpdates(locationListener)
+    } catch (e: SecurityException) {
+      Log.e(TAG, "Error occurred while pausing location updates: $e")
+    }
   }
 
   private fun removeLocationUpdatesForRequest(requestId: Int) {
@@ -544,9 +547,6 @@ class LocationModule : Module(), LifecycleEventListener, ActivityEventListener {
   }
 
   private fun resumeLocationUpdates() {
-    // For LocationManager, we can't easily resume individual location listeners
-    // The system will handle cleanup when the service is destroyed
-    // This is a limitation of using LocationManager instead of FusedLocationProviderClient
     for (requestId in mLocationCallbacks.keys) {
       val locationListener = mLocationCallbacks[requestId] ?: return
       val locationRequest = mLocationRequests[requestId] ?: return
@@ -689,18 +689,6 @@ class LocationModule : Module(), LifecycleEventListener, ActivityEventListener {
 
     const val GEOFENCING_EVENT_ENTER = 1
     const val GEOFENCING_EVENT_EXIT = 2
-  }
-
-  override fun onHostResume() {
-    startWatching()
-  }
-
-  override fun onHostPause() {
-    stopWatching()
-  }
-
-  override fun onHostDestroy() {
-    stopWatching()
   }
 
   override fun onActivityResult(activity: Activity?, requestCode: Int, resultCode: Int, data: Intent?) {

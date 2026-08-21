@@ -25,7 +25,7 @@ yarn add expo-horizon-core
 
 ## Prerequisites
 
-- Expo SDK 57 or later (`expo` package version 57.0.0+)
+- Expo SDK 57 or later (`expo` package version 57.0.15+)
 - Android development environment configured
 - Meta Quest developer account (for publishing)
 
@@ -280,6 +280,7 @@ Now, `horizonAppId` will contain the value of your Horizon App ID as defined in 
 
 | `expo-horizon-core` | Expo SDK Version |
 | ------------------- | ---------------- |
+| 57.0.1              | 57               |
 | 57.0.0              | 57               |
 | 56.0.0              | 56               |
 | 55.0.0-55.0.1       | 55               |

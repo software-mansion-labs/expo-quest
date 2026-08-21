@@ -1,6 +1,6 @@
 {
   "name": "expo-horizon-notifications",
-  "version": "57.0.0",
+  "version": "57.0.1",
   "description": "A fork of [`expo-notifications`](https://github.com/expo/expo/tree/main/packages/expo-notifications) that provides two implementations: - The default `expo-notifications` for Android and iOS platforms. - A Meta Horizon-compatible implementation that uses the Meta's push notification service.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -43,11 +43,11 @@
     ]
   },
   "dependencies": {
-    "@expo/image-utils": "^0.11.1",
+    "@expo/image-utils": "^0.11.4",
     "abort-controller": "^3.0.0",
     "badgin": "^1.1.5",
-    "expo-application": "~57.0.0",
-    "expo-constants": "~57.0.3"
+    "expo-application": "~57.0.2",
+    "expo-constants": "~57.0.13"
   },
   "devDependencies": {
     "expo-horizon-core": "*",
