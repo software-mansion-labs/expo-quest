@@ -1,6 +1,5 @@
 import ExpoHorizon from 'expo-horizon-core';
 import * as Location from 'expo-horizon-location';
-import { StatusBar } from 'expo-status-bar';
 import * as TaskManager from 'expo-task-manager';
 import React, { useState, useEffect, useCallback } from 'react';
 import {
@@ -12,6 +11,7 @@ import {
   Platform,
   ActivityIndicator,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Section, SectionTitle } from '../components/Section';
 import { GlobalStyles } from '../constants/styles';
@@ -64,6 +64,7 @@ function notifyFailure(action: string, error: unknown) {
   Alert.alert(`Could not ${action}`, message);
 }
 export default function LocationScreen() {
+  const insets = useSafeAreaInsets();
   const [location, setLocation] = useState<Location.LocationObject | null>(null);
   const [, setLastKnownLocation] = useState<Location.LocationObject | null>(null);
   const [heading, setHeading] = useState<Location.LocationHeadingObject | null>(null);
@@ -612,10 +613,9 @@ export default function LocationScreen() {
 
   return (
     <View style={GlobalStyles.screenContainer}>
-      <StatusBar style="auto" />
       <ScrollView
         style={GlobalStyles.scrollView}
-        contentContainerStyle={GlobalStyles.scrollContent}>
+        contentContainerStyle={[GlobalStyles.scrollContent, { paddingBottom: insets.bottom }]}>
         <Section title="Permissions">
           <TestButton
             title="Request Foreground Permissions"

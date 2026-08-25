@@ -1,6 +1,7 @@
 import * as Notifications from 'expo-horizon-notifications';
 import React from 'react';
-import { Alert, SafeAreaView, ScrollView } from 'react-native';
+import { Alert, ScrollView, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Section } from '../components/Section';
 import { TestButton } from '../components/TestButton';
@@ -20,6 +21,8 @@ Notifications.setNotificationHandler({
 });
 
 export default function NotificationsScreen() {
+  const insets = useSafeAreaInsets();
+
   const requestPermissions = async () => {
     try {
       const result = await Notifications.requestPermissionsAsync();
@@ -70,10 +73,10 @@ export default function NotificationsScreen() {
   };
 
   return (
-    <SafeAreaView style={GlobalStyles.screenContainer}>
+    <View style={GlobalStyles.screenContainer}>
       <ScrollView
         style={GlobalStyles.scrollView}
-        contentContainerStyle={GlobalStyles.scrollContent}>
+        contentContainerStyle={[GlobalStyles.scrollContent, { paddingBottom: insets.bottom }]}>
         <Section title="Permissions">
           <TestButton title="Request Permissions" onPress={requestPermissions} />
           <TestButton title="Get Permissions" onPress={getPermissions} />
@@ -87,6 +90,6 @@ export default function NotificationsScreen() {
           <TestButton title="Get Push Token" onPress={getPushToken} />
         </Section>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
