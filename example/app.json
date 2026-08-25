@@ -27,5 +27,11 @@
   "web": {
     "favicon": "./assets/favicon.png"
   },
-  "plugins": ["expo-build-properties", "expo-router", "expo-task-manager", "expo-status-bar"]
+  "plugins": [
+    "expo-build-properties",
+    "expo-router",
+    "expo-task-manager",
+    "expo-status-bar",
+    "@rnrepo/expo-config-plugin"
+  ]
 }

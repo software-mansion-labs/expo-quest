@@ -1,6 +1,7 @@
 import * as Notifications from 'expo-horizon-notifications';
 import React from 'react';
-import { Alert, SafeAreaView, ScrollView } from 'react-native';
+import { Alert, ScrollView, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Section } from '../components/Section';
 import { TestButton } from '../components/TestButton';
@@ -20,36 +21,51 @@ Notifications.setNotificationHandler({
 });
 
 export default function NotificationsScreen() {
+  const insets = useSafeAreaInsets();
+
   const requestPermissions = async () => {
-    const result = await Notifications.requestPermissionsAsync();
-    console.log(result);
+    try {
+      const result = await Notifications.requestPermissionsAsync();
+      Alert.alert('Permissions', JSON.stringify(result, null, 2));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      Alert.alert('Could not request permissions', message);
+    }
   };
 
   const getPermissions = async () => {
-    const result = await Notifications.getPermissionsAsync();
-    console.log(result);
+    try {
+      const result = await Notifications.getPermissionsAsync();
+      Alert.alert('Permissions', JSON.stringify(result, null, 2));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      Alert.alert('Could not get permissions', message);
+    }
   };
 
   const sendNotification = async () => {
-    const result = await Notifications.scheduleNotificationAsync({
-      content: {
-        title: 'Hello',
-        body: 'World',
-      },
-      trigger: {
-        type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
-        seconds: 2,
-      },
-    });
-    console.log(result);
+    try {
+      const result = await Notifications.scheduleNotificationAsync({
+        content: {
+          title: 'Hello',
+          body: 'World',
+        },
+        trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+          seconds: 2,
+        },
+      });
+      Alert.alert('Notification Scheduled', `Identifier: ${result}`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      Alert.alert('Could not send notification', message);
+    }
   };
 
   const getPushToken = async () => {
     try {
       const result = await Notifications.getDevicePushTokenAsync();
-      const stringifiedResult = JSON.stringify(result, null, 2);
-      Alert.alert('Push Token', stringifiedResult);
-      console.log(stringifiedResult);
+      Alert.alert('Push Token', JSON.stringify(result, null, 2));
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       Alert.alert('Could not get push token', message);
@@ -57,10 +73,10 @@ export default function NotificationsScreen() {
   };
 
   return (
-    <SafeAreaView style={GlobalStyles.screenContainer}>
+    <View style={GlobalStyles.screenContainer}>
       <ScrollView
         style={GlobalStyles.scrollView}
-        contentContainerStyle={GlobalStyles.scrollContent}>
+        contentContainerStyle={[GlobalStyles.scrollContent, { paddingBottom: insets.bottom }]}>
         <Section title="Permissions">
           <TestButton title="Request Permissions" onPress={requestPermissions} />
           <TestButton title="Get Permissions" onPress={getPermissions} />
@@ -74,6 +90,6 @@ export default function NotificationsScreen() {
           <TestButton title="Get Push Token" onPress={getPushToken} />
         </Section>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }

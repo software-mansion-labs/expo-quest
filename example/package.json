@@ -23,6 +23,8 @@
     "expo": "~57.0.15",
     "expo-build-properties": "~57.0.13",
     "expo-constants": "~57.0.13",
+    "@rnrepo/build-tools": "^0.2.2",
+    "@rnrepo/expo-config-plugin": "^0.3.6",
     "expo-horizon-core": "*",
     "expo-horizon-location": "*",
     "expo-horizon-notifications": "*",
