@@ -21,35 +21,48 @@ Notifications.setNotificationHandler({
 
 export default function NotificationsScreen() {
   const requestPermissions = async () => {
-    const result = await Notifications.requestPermissionsAsync();
-    console.log(result);
+    try {
+      const result = await Notifications.requestPermissionsAsync();
+      Alert.alert('Permissions', JSON.stringify(result, null, 2));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      Alert.alert('Could not request permissions', message);
+    }
   };
 
   const getPermissions = async () => {
-    const result = await Notifications.getPermissionsAsync();
-    console.log(result);
+    try {
+      const result = await Notifications.getPermissionsAsync();
+      Alert.alert('Permissions', JSON.stringify(result, null, 2));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      Alert.alert('Could not get permissions', message);
+    }
   };
 
   const sendNotification = async () => {
-    const result = await Notifications.scheduleNotificationAsync({
-      content: {
-        title: 'Hello',
-        body: 'World',
-      },
-      trigger: {
-        type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
-        seconds: 2,
-      },
-    });
-    console.log(result);
+    try {
+      const result = await Notifications.scheduleNotificationAsync({
+        content: {
+          title: 'Hello',
+          body: 'World',
+        },
+        trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+          seconds: 2,
+        },
+      });
+      Alert.alert('Notification Scheduled', `Identifier: ${result}`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      Alert.alert('Could not send notification', message);
+    }
   };
 
   const getPushToken = async () => {
     try {
       const result = await Notifications.getDevicePushTokenAsync();
-      const stringifiedResult = JSON.stringify(result, null, 2);
-      Alert.alert('Push Token', stringifiedResult);
-      console.log(stringifiedResult);
+      Alert.alert('Push Token', JSON.stringify(result, null, 2));
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       Alert.alert('Could not get push token', message);
