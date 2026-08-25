@@ -12,6 +12,7 @@ import {
   Platform,
   ActivityIndicator,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Section, SectionTitle } from '../components/Section';
 import { GlobalStyles } from '../constants/styles';
@@ -611,7 +612,7 @@ export default function LocationScreen() {
   }, [checkInitialStatus, setupTaskManager]);
 
   return (
-    <View style={GlobalStyles.screenContainer}>
+    <SafeAreaView style={GlobalStyles.screenContainer}>
       <StatusBar style="auto" />
       <ScrollView
         style={GlobalStyles.scrollView}
@@ -833,6 +834,6 @@ export default function LocationScreen() {
           />
         </Section>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }

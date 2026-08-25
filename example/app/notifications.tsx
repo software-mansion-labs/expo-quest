@@ -1,6 +1,7 @@
 import * as Notifications from 'expo-horizon-notifications';
 import React from 'react';
-import { Alert, SafeAreaView, ScrollView } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Section } from '../components/Section';
 import { TestButton } from '../components/TestButton';
