@@ -40,7 +40,8 @@ export const GlobalStyles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    padding: 20,
+    paddingHorizontal: 12,
+    paddingTop: 16,
   },
   pageTitle: {
     fontSize: 24,
