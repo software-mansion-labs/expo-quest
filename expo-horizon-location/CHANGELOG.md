@@ -10,6 +10,12 @@
 
 ### 💡 Others
 
+## 57.0.1 — 2026-08-21
+
+### 💡 Others
+
+- Synced with upstream `expo-location@57.0.12` ([bdba3c1](https://github.com/expo/expo/commit/bdba3c12b2035981233e356a7f52fb2cb3958802)).
+
 ## 56.0.0 — 2026-06-16
 
 ### 🎉 New features

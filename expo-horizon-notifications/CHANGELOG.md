@@ -10,6 +10,12 @@
 
 ### 💡 Others
 
+## 57.0.1 — 2026-08-21
+
+### 💡 Others
+
+- Synced with upstream `expo-notifications@57.0.13` ([c0d1271](https://github.com/expo/expo/commit/c0d1271bc06f7b0ec36097a2f403a8e65b05875e), [955f5fa](https://github.com/expo/expo/commit/955f5fa28e5473f8ad7ac62a518c0ddc261bdd19)).
+
 ## 56.0.0 — 2026-06-16
 
 ### 🎉 New features
