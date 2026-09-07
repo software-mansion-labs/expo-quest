@@ -1,6 +1,6 @@
 {
   "name": "expo-horizon-location",
-  "version": "57.0.1",
+  "version": "57.0.2",
   "description": "A fork of expo-location that provides two implementations: The default expo-location behavior using Google Play Services. A Meta Horizon OS compatible implementation that does not rely on Google Play Services.",
   "main": "build/index.js",
   "types": "build/index.d.ts",

@@ -10,6 +10,10 @@
 
 ### 💡 Others
 
+## 57.0.2 — 2026-09-07
+
+### 💡 Others
+
 - Synced with upstream `expo-notifications@57.0.17` ([e2b5a4b](https://github.com/expo/expo/commit/e2b5a4b963882fdc2cc1fe55846c89ae4158bc12)).
 
 ## 57.0.1 — 2026-08-21
