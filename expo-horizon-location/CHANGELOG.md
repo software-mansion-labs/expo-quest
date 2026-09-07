@@ -10,6 +10,8 @@
 
 ### 💡 Others
 
+- Synced with upstream `expo-location@57.0.16` ([01bd2ee](https://github.com/expo/expo/commit/01bd2ee901b9afb109ebd8fa2949a3a586bac7d0)).
+
 ## 57.0.1 — 2026-08-21
 
 ### 💡 Others

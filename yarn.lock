@@ -1506,6 +1506,15 @@
     debug "^4.3.4"
     getenv "^2.0.0"
 
+"@expo/env@~2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@expo/env/-/env-2.4.3.tgz#cba412d1cf19374bedd83106b32166a12862667c"
+  integrity sha512-M1NXeZCA1mkMkYOyIe7PlyRX0/jqFtMoJgyblnlq/vpCRfmueFT7RnGSQG8uEFDF5WHOFGijAQ3fogPh3/n5Ng==
+  dependencies:
+    chalk "^4.0.0"
+    debug "^4.3.4"
+    getenv "^2.0.0"
+
 "@expo/expo-modules-macros-plugin@0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@expo/expo-modules-macros-plugin/-/expo-modules-macros-plugin-0.3.0.tgz#5e9b23702d31b4b71787dd4fccc5b14c82242442"
@@ -4687,6 +4696,13 @@ expo-constants@~57.0.13:
   dependencies:
     "@expo/env" "~2.4.2"
 
+expo-constants@~57.0.17:
+  version "57.0.17"
+  resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-57.0.17.tgz#d8b900991f2a5e3c2567fc6e9d1d052527d4fa20"
+  integrity sha512-cPWYBKN1SEbg2lXg2f8VkePJqGZrJPLvVdQDCTfbFu9sQHO1M31Y1zILReUuGnmt/VKeUz40ze579vR00xGu/A==
+  dependencies:
+    "@expo/env" "~2.4.3"
+
 expo-constants@~57.0.3:
   version "57.0.3"
   resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-57.0.3.tgz#ca226539ffaa46459b5de1cd9f59062275de2a4b"
@@ -7324,14 +7340,12 @@ react-freeze@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-freeze/-/react-freeze-1.0.4.tgz#cbbea2762b0368b05cbe407ddc9d518c57c6f3ad"
   integrity sha512-r4F0Sec0BLxWicc7HEyo2x3/2icUTrRmDjaaRyzzn+7aDyFZliszMDOgLVwSnQnYENOlL1o569Ze2HZefk8clA==
 
-"react-is-18@npm:react-is@^18.3.1", react-is@^18.0.0:
-  name react-is-18
+"react-is-18@npm:react-is@^18.3.1":
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
 
-"react-is-19@npm:react-is@^19.2.5", react-is@^19.1.0, react-is@^19.2.3:
-  name react-is-19
+"react-is-19@npm:react-is@^19.2.5":
   version "19.2.7"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-19.2.7.tgz#57668ee86a78574a542b0a539455212b2c086df2"
   integrity sha512-kZFnouyVv7eP/Phmrlo9FK+zcAdriZJvzxXHF1Sl1P377WSGe2G/JxVolhTrB/jeV47lKImhNUsijjHAAbcl/A==
@@ -7340,6 +7354,16 @@ react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-is@^18.0.0:
+  version "18.3.1"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
+  integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
+
+react-is@^19.1.0, react-is@^19.2.3:
+  version "19.2.7"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-19.2.7.tgz#57668ee86a78574a542b0a539455212b2c086df2"
+  integrity sha512-kZFnouyVv7eP/Phmrlo9FK+zcAdriZJvzxXHF1Sl1P377WSGe2G/JxVolhTrB/jeV47lKImhNUsijjHAAbcl/A==
 
 react-native-drawer-layout@^4.2.2:
   version "4.2.7"
