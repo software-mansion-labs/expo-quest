@@ -1,6 +1,6 @@
 {
   "name": "expo-horizon-core",
-  "version": "57.0.1",
+  "version": "57.0.2",
   "description": "ExpoHorizon common features.",
   "main": "build/index.js",
   "types": "build/index.d.ts",

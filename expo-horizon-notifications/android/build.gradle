@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'host.exp.exponent'
-version = '57.0.1'
+version = '57.0.2'
 
 expoModule {
   canBePublished false
@@ -17,7 +17,7 @@ android {
   namespace "expo.modules.notifications"
   defaultConfig {
     versionCode 21
-    versionName '57.0.1'
+    versionName '57.0.2'
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     buildConfigField "String", "META_HORIZON_APP_ID", horizonAppIdConfigField
     consumerProguardFiles 'proguard-rules.pro'

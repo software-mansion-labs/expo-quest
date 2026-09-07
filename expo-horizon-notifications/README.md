@@ -98,6 +98,7 @@ Our goal is to align the version numbers of `expo-horizon-notifications` and `ex
 
 | `expo-horizon-notifications` | `expo-notifications` | Expo SDK Version |
 | ---------------------------- | -------------------- | ---------------- |
+| 57.0.2                       | 57.0.17              | 57               |
 | 57.0.1                       | 57.0.13              | 57               |
 | 57.0.0                       | 57.0.3               | 57               |
 | 56.0.0                       | 56.0.18              | 56               |
